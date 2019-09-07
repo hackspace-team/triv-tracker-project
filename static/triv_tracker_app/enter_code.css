@@ -1,0 +1,42 @@
+body {
+  background-image: linear-gradient(to right bottom, rgb(20, 247, 111), rgb(154, 179, 0));
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  box-shadow: 0 7.5px 5px rgba(0,0,0,.3);
+  border-radius: 30px;
+}
+
+.code-input {
+  border: none;
+  font-size: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding: 20px 30px;
+  outline: none;
+}
+
+.submit-button {
+  border: none;
+  font-size: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 20px;
+  outline: none;
+  transition: all .2s;
+}
+
+.submit-button:hover {
+  background-color: #eee;
+}

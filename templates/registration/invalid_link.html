@@ -1,0 +1,14 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'registration/base.css' %}">
+{% endblock %}
+{% block body %}
+  <title>Invalid Activation Link</title>
+  <div class="float-container text-center">
+    <h1 class="display-4">Email Sent!</h1>
+    <div class="mt-4">
+      <p>Activation link is invalid. Please register again.</p>
+    </div>
+  </div>
+{% endblock %}

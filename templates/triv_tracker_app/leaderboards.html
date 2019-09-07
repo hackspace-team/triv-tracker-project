@@ -1,0 +1,28 @@
+{% if profile.is_mentor %}
+  {% include 'triv_tracker_app/mentor_base.html' %}
+{% else %}
+  {% include 'triv_tracker_app/base.html' %}
+{% endif %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'triv_tracker_app/leaderboards.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="container mt-5 text-center">
+    <h1 class="display-2 mb-5">Leaderboards</h1>
+    <a href="/leaderboards-all/" class="btn btn-primary view-all">View All &rarr;</a>
+    <div class="list-group">
+      {% for rank,user in users.items %}
+        <li class="list-group-item leaderboards">
+          <span class="">{{rank}}.</span>
+          <div class="text-left">
+            <span class="">{{ user.user.username }}</span>
+          </div>
+          <div class="points">
+            <span class=" points">{{ user.points }}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

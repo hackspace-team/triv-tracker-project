@@ -1,0 +1,86 @@
+{% if profile.is_mentor %}
+  {% include 'triv_tracker_app/mentor_base.html' %}
+{% else %}
+  {% include 'triv_tracker_app/base.html' %}
+{% endif %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'triv_tracker_app/achievements.css' %}">
+{% endblock %}
+{% block body %}
+{% if form.errors %}
+  {% for field in form %}
+      {% for error in field.errors %}
+          <div style="z-index: 100 !important;position: absolute !important;top: 0 !important;width: 100%;" class="alert alert-danger alert-dismissible mb-0 text-left">
+            <button class="close" type="button" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            <strong>{{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+  {% endfor %}
+{% endif %}
+  <title>Achievements</title>
+  <div class="container p-5">
+    <h1 class="display-2 text-center my-5">Achievements</h1>
+    {% for category, obj_list in categories.items %}
+    <div class="container">
+      <div class="language-group">
+        <h1 class="mt-5 mb-4 display-4">{{category}}</h1>
+        <div class="achievement-container">
+          {% for obj_pair in obj_list %}
+            {% for obj, state in obj_pair.items %}
+              {% if not state %}
+                <div class="achievement">
+                  <h3>{{obj.name}}</h3>
+                  <p>{{obj.short_description}}</p>
+                  <p>Points: {{obj.reward}}</p>
+                  {% if not profile.is_mentor %}
+                    <a href="#detail-popup{{obj.id}}" class="btn btn-primary details-btn">Details</a>
+                  {% endif %}
+                </div>
+              {% else %}
+              <div style="pointer-events: none;" class="achievement">
+                <h3>{{obj.name}} - Finished</h3>
+                <p>{{obj.short_description}}</p>
+                <p>Points: {{obj.reward}}</p>
+                {% if not profile.is_mentor %}
+                  <a href="#detail-popup{{obj.id}}" class="btn btn-primary details-btn">Details</a>
+                {% endif %}
+                <div class="gray-overlay"></div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% for obj_pair in obj_list %}
+      {% for obj, state in obj_pair.items %}
+        <div class="detail-popup" id="detail-popup{{obj.id}}">
+          <div class="popup-content">
+            <a href="#" class="x">&times;</a>
+            <h2 class="display-4">{{obj.name}}</h2>
+            <p class="lead">{{obj.long_description}}</p>
+            <a href="#enter-code{{obj.id}}" class="btn btn-primary details-btn">I Finished!</a>
+          </div>
+        </div>
+        <div class="enter-code" id="enter-code{{obj.id}}">
+          <div class="popup-content">
+            <a href="#" class="x">&times;</a>
+            <h2 class="display-4">I Finished!</h2>
+            <p class="lead">Please ask a mentor around you to check your work and you may be rewarded with the points.</p>
+            <form enctype="multipart/form-data" method="post">
+              {% csrf_token %}
+              {{form}}
+              <input type="hidden" name="reward" value={{obj.reward}}>
+              <input type="hidden" name="last_achievement_name" value="{{obj.name}}">
+              <input class="submit-button" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+{% endblock%}

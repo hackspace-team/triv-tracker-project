@@ -1,0 +1,29 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'triv_tracker_app/progress.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <h1 class="display-2 my-5 text-center">Progress</h1>
+    {% if records %}
+      {% for record, achievements in records.items %}
+        <div class="record">
+          <h3 class="display-4 mb-4 d-inline-block">{{record}}</h3>
+          <div class="achievements">
+            {% for achievement in achievements %}
+              <div class="achievement text-center">
+                <h4 class="mb-3">{{achievement.name}}</h4>
+                <p>Category: {{achievement.category}}</p>
+                <p>Description: {{achievement.short_description}}</p>
+                <p>Reward: {{achievement.reward}}</p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="lead text-center my-5">No achievements completed yet!</p>
+    {% endif %}
+  </div>
+{% endblock %}

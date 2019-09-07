@@ -1,0 +1,38 @@
+fieldset{
+
+}
+
+.Box {
+  display: inline-block;
+  margin: 0 auto;
+  display: block;
+
+  padding-top: 0.35em;
+  padding-bottom: 0.1em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px groove;
+  text-align:center;
+  width: 500px;
+  height: 200px;
+  color: dimgrey;
+  font-size: 20px;
+}
+
+body {
+    text-align: center;
+}
+
+
+
+
+.LoginButton {
+    text-align: center;
+
+}
+
+.WelcomeButtons {
+    color: #4CAF50;
+    text-align: center;
+
+}

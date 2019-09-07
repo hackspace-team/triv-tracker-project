@@ -1,0 +1,24 @@
+body {
+  background-image: linear-gradient(to right bottom, rgb(20, 247, 111), rgb(154, 179, 0));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 50px;
+}
+
+.achievement {
+  box-shadow: 0 5px 5px rgba(0,0,0,.3);
+  border-radius: 20px;
+  padding: 30px;
+  background-color: white;
+}
+
+.record {
+  margin: 50px 0;
+}

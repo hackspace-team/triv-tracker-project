@@ -1,0 +1,15 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'registration/base.css' %}">
+{% endblock %}
+{% block body %}
+  <title>Email Confirmed!</title>
+  <div class="float-container text-center">
+    <h1 class="display-4">Email Sent!</h1>
+    <div class="mt-4">
+      <p>Thank you for you email confirmation. You may now login to you account.</p>
+      <a class="btn btn-primary" href="/login/">Login</a>
+    </div>
+  </div>
+{% endblock %}

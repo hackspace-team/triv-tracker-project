@@ -1,0 +1,22 @@
+body {
+  background-image: linear-gradient(to right bottom, rgb(20, 247, 111), rgb(154, 179, 0));
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.leaderboards {
+  display: grid;
+  grid-template-columns: 5% 10% 80%;
+}
+
+.points {
+  text-align: right;
+}
+
+.view-all {
+  position: absolute;
+  top: 62.5px;
+  right: 10px;
+}

@@ -1,0 +1,11 @@
+{% extends 'triv_tracker_app/base.html' %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'registration/base.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="float-container text-center">
+    <h1 class="display-4">Email Confirmation</h1>
+    <p class="mt-5">Please confirm you email address to complete your registration.</p>
+  </div>
+{% endblock %}
