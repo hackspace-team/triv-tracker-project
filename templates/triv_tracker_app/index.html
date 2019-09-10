@@ -6,41 +6,26 @@
 {% load staticfiles %}
 {% block head %}
   <link rel="stylesheet" href="{% static 'triv_tracker_app/index.css' %}">
-  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/style1.css' %}">
 {% endblock%}
 {% block body %}
     {% if user.is_authenticated %}
       {% if profile.is_mentor %}
-        <div class="authenticated-container">
-          <h1>Welcome, {{request.user}}!</h1>
-          <p>First Name: {{request.user.first_name}}</p>
-          <p>Last Name: {{request.user.last_name}}</p>
-          <p>Email: {{request.user.email}}</p>
-          <p>Your mentor code: {{code}}</p>
-            <div class= "WelcomeButtons">
-              <a class="btn btn-primary" href="/update/">Update Profile</a>
-          </div>
+        <div class="authenticated-container text-center">
+          <h1 class="display-4">Welcome, {{request.user}}!</h1>
+          <p class="lead">First Name: {{request.user.first_name}}</p>
+          <p class="lead">Last Name: {{request.user.last_name}}</p>
+          <p class="lead">Email: {{request.user.email}}</p>
+          <p class="lead">Your mentor code: {{code}}</p>
+          <a class="btn btn-primary" href="/update/">Update Profile</a>
         </div>
       {% else %}
-        <div class="authenticated-container">
-          <h1>Welcome, {{request.user}}!</h1>
-          <p>First Name: {{request.user.first_name}}</p>
-          <p>Last Name: {{request.user.last_name}}</p>
-          <p>Email: {{request.user.email}}</p>
-          <p>Points: {{profile.points}}</p>
-          <div class= "Box" >
-              <form>
-                <fieldset>
-                  <legend>Your Stats</legend>
-                  <p>
-                    Your points: {{profile.points}}
-                    </p>
-                </fieldset>
-              </form>
-            </div>
-            <div class= "WelcomeButtons">
-              <a class="btn btn-primary" href="/update/">Update Profile</a>
-          </div>
+        <div class="authenticated-container text-center">
+          <h1 class="display-4">Welcome, {{request.user}}!</h1>
+          <p class="lead">First Name: {{request.user.first_name}}</p>
+          <p class="lead">Last Name: {{request.user.last_name}}</p>
+          <p class="lead">Email: {{request.user.email}}</p>
+          <p class="lead">Points: {{profile.points}}</p>
+          <a class="btn btn-primary" href="/update/">Update Profile</a>
         </div>
       {% endif %}
     {% else %}
@@ -53,5 +38,6 @@
           </div>
         </div>
       </div>
+      <img class="background-image" src="{% static 'index.jpg' %}" alt="Background Image">
     {% endif %}
 {% endblock %}

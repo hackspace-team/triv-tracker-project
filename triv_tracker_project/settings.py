@@ -24,9 +24,10 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = 'hd%dm+5!+$mesrz2+d*!r8vco71q5slauw8c-4qrroxbac(j_^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["trivalleycoderdojo.pythonanywhere.com"]
+# ALLOWED_HOSTS = ["trivalleycoderdojo.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition

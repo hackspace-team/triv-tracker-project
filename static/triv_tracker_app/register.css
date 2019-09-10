@@ -1,0 +1,18 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: linear-gradient(to right bottom, rgb(20, 247, 111), rgb(154, 179, 0));
+}
+
+.form {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 45%;
+  padding: 40px;
+  text-align: center;
+}

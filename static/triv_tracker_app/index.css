@@ -11,6 +11,16 @@ h3 {
   font-size: 40px !important;
 }
 
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* height: 100%; */
+  width: 100%;
+  transform: translateY(-130px);
+  z-index: -1;
+}
+
 .main-header, .sub-header {
   background-color: rgba(255,255,255,.8);
   border-radius: 2px;
@@ -18,7 +28,7 @@ h3 {
 }
 
 .register-btn {
-  background-color: rgba(255,255,255,.8);
+  background-color: rgb(255,255,255);
   border-radius: 40px;
   padding: 15px 45px;
   font-size: 35px !important;
@@ -33,4 +43,14 @@ h3 {
   background-color: #eee;
   color: black;
   text-decoration: none;
+}
+
+.authenticated-container {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border-radius: 5px;
 }

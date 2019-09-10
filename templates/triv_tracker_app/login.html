@@ -1,7 +1,7 @@
 {% extends 'triv_tracker_app/base.html' %}
 {% load staticfiles %}
 {% block head %}
-  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/style1.css' %}">
+  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/register.css' %}">
 {% endblock %}
 {% block body %}
 {% if form.errors %}
@@ -16,21 +16,17 @@
       {% endfor %}
   {% endfor %}
 {% endif %}
-<h1>Welcome to TriValley CoderDojo!</h1>
-<h3>Please create an account.</h3>
-<div class= "Box" >
-    <form enctype="multipart/form-data" method="post">
+<div class="container text-center">
+  <h1 class="display-2 mt-4">TriV Tracker</h1>
+  <div class="container">
+    <form class="form" enctype="multipart/form-data" method="post">
+      <h1 class="display-4">Login</h1>
       {% csrf_token %}
-      <fieldset>
-        <legend>Login</legend>
-        {{form}}
-        <input type="submit" value="Login">
-      </fieldset>
+      {{form}}
+      <br>
+      <input class="btn btn-primary mt-3" type="submit" value="Login">
+      <p style="font-size: 15px;" class="lead">Don't have an account? <a href="/register/">Register Here</a></p>
     </form>
   </div>
-  <div class= "Button">
-    <p>Forgot your password? <a href="/password_reset/">Reset password</a></p>
-    <p>Don't have an account? <a href="/register/">Register Here</a></p>
-
-  </div>
+</div>
 {% endblock %}

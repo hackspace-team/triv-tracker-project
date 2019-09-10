@@ -3,6 +3,10 @@
 {% else %}
   {% include 'triv_tracker_app/base.html' %}
 {% endif %}
+{% load staticfiles %}
+{% block head %}
+  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/register.css' %}">
+{% endblock %}
 {% block body %}
 {% if user_form.errors %}
   {% for field in user_form %}
@@ -26,12 +30,15 @@
     </div>
   {% endfor %}
 {% endif %}
-  <form class="mb-5" enctype="multipart/form-data" method="post">
+<div class="container text-center">
+  <h1 class="display-2 mt-4">Update Profile</h1>
+  <form class="form mb-5 rounded" enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{form}}
     {% if profile.is_mentor %}
-      <input value={{code}} type="text" name="code">
+      <input class="form-control" value={{code}} type="text" name="code">
     {% endif %}
-    <input type="submit" value="Update">
+    <input class="btn btn-primary mt-3" type="submit" value="Update">
   </form>
+</div>
 {% endblock %}

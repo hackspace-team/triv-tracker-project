@@ -1,7 +1,7 @@
 {% extends 'triv_tracker_app/base.html' %}
 {% load staticfiles %}
 {% block head %}
-  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/style1.css' %}">
+  <link rel= "stylesheet" type="text/css" href="{% static 'triv_tracker_app/register.css' %}">
 {% endblock %}
 {% block body %}
   {% if user_form.errors %}
@@ -16,21 +16,20 @@
         {% endfor %}
     {% endfor %}
   {% endif %}
-  <h1>Welcome to TriValley CoderDojo!</h1>
-  <h3>Please create an account.</h3>
-  <div class= "Box" >
-    <fieldset>
-      <legend>Register</legend>
-      <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{user_form}}
-        <input type="submit" value="Register">
-      </form>
-    </fieldset>
-    </div>
-    <div class= "Button">
-      <p>Or if you already have an account:</p>
-      <button type="button">Login</button>
+  <form class="modal-content animate form" action="" data-aos="fade-left">
+      <div class="imgcontainer">
+        <h1 class="display-3">Register</h1>
+        <h3 class="lead">Please create an account</h3>
+      </div>
 
-    </div>
+      <div class="container">
+        <form enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          {{user_form}}
+          <input class="btn btn-primary mt-3" type="submit" value="Register">
+          <p style="font-size: 15px;" class="lead">Alread have an account? <a href="/login/">Login Here</a></p>
+        </form>
+      </div>
+
+  </form>
 {% endblock %}

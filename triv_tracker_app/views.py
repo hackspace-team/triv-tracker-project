@@ -161,11 +161,17 @@ def update(request):
             "email": request.user.email,
         })
 
-    context_dict = {
-        "form": form,
-        "profile": profile,
-        "code": models.MentorCode.objects.filter(user=profile)[0].code
-    }
+    if profile.is_mentor:
+        context_dict = {
+            "form": form,
+            "profile": profile,
+            "code": models.MentorCode.objects.filter(user=profile)[0].code
+        }
+    else:
+        context_dict = {
+            "form": form,
+            "profile": profile
+        }
 
     return render(request, "triv_tracker_app/update.html", context=context_dict)
 

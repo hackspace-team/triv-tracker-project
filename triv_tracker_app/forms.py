@@ -10,19 +10,19 @@ class SignupForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 class LoginForm(forms.ModelForm):
-    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Username"}))
-    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "login-input", "placeholder": "Password"}))
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input d-inline-block w-50 m-0", "placeholder": "Username"}))
+    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "form-control login-input d-inline-block w-50 m-0", "placeholder": "Password"}))
 
     class Meta:
         model = models.LoginModel
         fields = ('username', 'password')
 
 class UserForm(forms.ModelForm):
-    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "First Name"}))
-    last_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Last Name"}))
-    email = forms.EmailField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Email"}))
-    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Username"}))
-    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "login-input", "placeholder": "Password"}))
+    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "First Name"}))
+    last_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Last Name"}))
+    email = forms.EmailField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Email"}))
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Username"}))
+    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={"class": "form-control login-input", "placeholder": "Password"}))
 
     class Meta:
         model = User
@@ -36,10 +36,10 @@ class UserProfileForm(forms.ModelForm):
         fields = ()
 
 class UpdateForm(forms.ModelForm):
-    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "First Name"}))
-    last_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Last Name"}))
-    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Username"}))
-    email = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "login-input", "placeholder": "Email"}))
+    first_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "First Name"}))
+    last_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Last Name"}))
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Username"}))
+    email = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Email"}))
 
     class Meta:
         model = models.UpdateModel
