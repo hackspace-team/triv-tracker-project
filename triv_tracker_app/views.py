@@ -25,33 +25,8 @@ def format_string(string):
 
     return final_string
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
-            message = render_to_string('registration/acc_active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-                'token':account_activation_token.make_token(user),
-            })
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
-            )
-            email.send()
-            return render(request, "registration/email_confirmation.html")
-    else:
-        form = SignupForm()
-    return render(request, 'signup.html', {'form': form})
-
 def index(request):
-    if request.user.username:
+    if request.user.is_authenticated:
         profile = models.UserProfile.objects.filter(user=request.user)[0]
         if profile.is_mentor:
             code = models.MentorCode.objects.filter(user=profile)[0].code
@@ -71,6 +46,7 @@ def user_login(request):
             password = login_form.cleaned_data["password"]
 
             user = authenticate(username=username, password=password)
+            print(user)
 
             if user:
                 if user.is_active:
@@ -93,10 +69,8 @@ def register(request):
         # profile_form = forms.UserProfileForm(request.POST)
 
         if user_form.is_valid():
-            print("valid")
             user = user_form.save(commit=False)
             user.set_password(user.password)
-            user.is_active = False
             user.save()
 
             profile = models.UserProfile(user=user, points=0)
@@ -105,20 +79,8 @@ def register(request):
             record = models.AchievementRecord(username=user.username)
             record.save()
 
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your tracker account.'
-            message = render_to_string('registration/acc_active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-                'token':account_activation_token.make_token(user),
-            })
-            to_email = user_form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
-            )
-            email.send()
-            return render(request, "registration/email_confirmation.html")
+            login(request, User.objects.filter(username=user.username)[0])
+            return HttpResponseRedirect("/")
 
     else:
         user_form = forms.UserForm()
