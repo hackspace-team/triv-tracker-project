@@ -185,6 +185,8 @@ def achievements(request):
                 setattr(record, format_string(last_achievement_name), True)
                 record.save()
 
+                messages.success(request, "Account successfully updated!")
+
                 return HttpResponseRedirect("/achievements/")
 
             else:
