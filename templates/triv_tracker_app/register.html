@@ -16,20 +16,13 @@
         {% endfor %}
     {% endfor %}
   {% endif %}
-  <form class="modal-content animate form" action="" data-aos="fade-left">
-      <div class="imgcontainer">
-        <h1 class="display-3">Register</h1>
-        <h3 class="lead">Please create an account</h3>
-      </div>
-
-      <div class="container">
-        <form enctype="multipart/form-data" method="post">
-          {% csrf_token %}
-          {{user_form}}
-          <input class="btn btn-primary mt-3" type="submit" value="Register">
-          <p style="font-size: 15px;" class="lead">Alread have an account? <a href="/login/">Login Here</a></p>
-        </form>
-      </div>
-
-  </form>
+  <div class="container text-center">
+    <h1 class="display-2">Register</h1>
+    <form class="form" enctype="form multipart/form-data" method="post">
+      {% csrf_token %}
+      {{user_form}}
+      <input class="btn btn-primary mt-3" type="submit" value="Register">
+      <p style="font-size: 15px;" class="lead">Alread have an account? <a href="/login/">Login Here</a></p>
+    </form>
+  </div>
 {% endblock %}

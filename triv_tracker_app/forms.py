@@ -39,7 +39,7 @@ class UpdateForm(forms.ModelForm):
     first_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "First Name"}))
     last_name = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Last Name"}))
     username = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Username"}))
-    email = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Email"}))
+    email = forms.CharField(label="", widget=forms.TextInput(attrs={"class": "form-control login-input", "placeholder": "Email", "type": "email"}))
 
     class Meta:
         model = models.UpdateModel

@@ -63,7 +63,6 @@ def user_login(request):
     return render(request, "triv_tracker_app/login.html", context={"form": login_form})
 
 def register(request):
-    print("rendered")
     if request.method == "POST":
         user_form = forms.UserForm(request.POST)
         # profile_form = forms.UserProfileForm(request.POST)
@@ -76,10 +75,10 @@ def register(request):
             profile = models.UserProfile(user=user, points=0)
             profile.save()
 
-            record = models.AchievementRecord(username=user.username)
+            record = models.AchievementRecord(user=user)
             record.save()
 
-            login(request, User.objects.filter(username=user.username)[0])
+            login(request, user)
             return HttpResponseRedirect("/")
 
     else:
@@ -156,7 +155,7 @@ def achievements(request):
         for achievement in achievements_category:
             title = achievement.name
             formatted_title = format_string(title)
-            record = models.AchievementRecord.objects.filter(username=request.user.username)[0]
+            record = models.AchievementRecord.objects.filter(user=request.user)[0]
             obj = {}
             try:
                 obj[achievement] = getattr(record, formatted_title)

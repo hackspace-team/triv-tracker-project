@@ -30,7 +30,7 @@ class Achievement(models.Model):
         return self.name
 
 class AchievementRecord(models.Model):
-    username = models.CharField(max_length=200, default="user")
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
     loops_2 = models.BooleanField(default=False)
     loops_1 = models.BooleanField(default=False)
     control_flow = models.BooleanField(default=False)
@@ -71,7 +71,7 @@ class AchievementRecord(models.Model):
     program_a_game = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 class Code(models.Model):
     code = models.CharField(max_length=10)
