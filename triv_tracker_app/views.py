@@ -181,7 +181,7 @@ def achievements(request):
                 user.last_achievement_time = last_achievement_time
                 user.save()
 
-                record = models.AchievementRecord.objects.filter(username=request.user.username)[0]
+                record = models.AchievementRecord.objects.filter(user=request.user)[0]
                 setattr(record, format_string(last_achievement_name), True)
                 record.save()
 
