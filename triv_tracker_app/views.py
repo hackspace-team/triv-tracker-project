@@ -228,7 +228,7 @@ def progress(request):
 
 @login_required(login_url="/login/")
 def leaderboards(request):
-    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile where is_mentor = false order by points desc limit 5")
+    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile where is_mentor is not true order by points desc limit 5")
     leaderboards = {}
     for i in range(len(users)):
         leaderboards[i+1] = users[i]
