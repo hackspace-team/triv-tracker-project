@@ -19,6 +19,9 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from triv_tracker_app import views
 
+handler404 = 'triv_tracker_app.views.handler404'
+handler500 = 'triv_tracker_app.views.handler500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('', include('triv_tracker_app.urls')),

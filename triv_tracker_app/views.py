@@ -13,6 +13,14 @@ from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 import datetime
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+def handler404(request, *args, **argv):
+    return render(request, "errors/404.html")
+
+def handler500(request, *args, **argv):
+    return render(request, "errors/500.html")
 
 def format_string(string):
     string = string.lower()
@@ -185,7 +193,7 @@ def achievements(request):
                 setattr(record, format_string(last_achievement_name), True)
                 record.save()
 
-                messages.success(request, "Account successfully updated!")
+                messages.success(request, "Congratulations! " + reward + " points have been added to your account!")
 
                 return HttpResponseRedirect("/achievements/")
 
@@ -220,11 +228,12 @@ def progress(request):
 
 @login_required(login_url="/login/")
 def leaderboards(request):
-    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile order by points desc limit 5")
+    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile where is_mentor = false order by points desc limit 5")
     leaderboards = {}
     for i in range(len(users)):
-        if not users[i].is_mentor:
-            leaderboards[i+1] = users[i]
+        leaderboards[i+1] = users[i]
+
+    print(leaderboards)
 
     context_dict = {
         "users": leaderboards,
@@ -235,7 +244,7 @@ def leaderboards(request):
 
 @login_required(login_url="/login/")
 def leaderboards_all(request):
-    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile order by points desc")
+    users = models.UserProfile.objects.raw("select * from triv_tracker_app_UserProfile where is_mentor = false order by points desc")
     leaderboards = {}
     for i in range(len(users)):
         if not users[i].is_mentor:

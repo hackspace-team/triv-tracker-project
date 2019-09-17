@@ -27,11 +27,8 @@ SECRET_KEY = 'hd%dm+5!+$mesrz2+d*!r8vco71q5slauw8c-4qrroxbac(j_^'
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = ["trivalleycoderdojo.pythonanywhere.com"]
+# ALLOWED_HOSTS = ["trivalleycoderdojo.pythonanywhere.com", "127.0.0.1", "localhost"]
 ALLOWED_HOSTS = []
-
-USE_TZ = True
-TIME_ZONE = 'PST'
 
 # Application definition
 
@@ -98,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Pacific'
 
 USE_I18N = True
 
